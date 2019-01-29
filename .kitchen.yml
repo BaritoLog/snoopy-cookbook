@@ -31,3 +31,5 @@ suites:
         - test/integration/default
     attributes:
       app_name: "snoopy"
+      snoopy:
+        version: "git-360bb18"

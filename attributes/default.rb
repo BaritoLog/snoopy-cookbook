@@ -12,5 +12,6 @@ default[cookbook_name]['user'] = cookbook_name
 default[cookbook_name]['group'] = cookbook_name
 default[cookbook_name]['install_directory'] = "/opt/#{cookbook_name}"
 default[cookbook_name]['install_file'] = "snoopy-install.sh"
+default[cookbook_name]['version'] = "stable"
 
 

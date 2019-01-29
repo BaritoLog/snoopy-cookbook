@@ -23,9 +23,11 @@ unless os.windows?
     its('group') { should eq 'snoopy' }
   end
 
-  describe directory('/var/log/snoopy') do
-    its('mode') { should cmp '0755' }
-    its('owner') { should eq 'snoopy' }
-    its('group') { should eq 'snoopy' }
+  describe file('/etc/snoopy.ini') do
+    it { should exist }
+  end
+
+  describe file('/var/log/auth.log') do
+    it { should exist }
   end
 end

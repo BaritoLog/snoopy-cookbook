@@ -11,6 +11,7 @@ user = node[cookbook_name]['user']
 group = node[cookbook_name]['group']
 install_directory = node[cookbook_name]['install_directory']
 install_file = node[cookbook_name]['install_file']
+version = node[cookbook_name]['version']
 
 directory install_directory do
   owner user
@@ -19,6 +20,9 @@ directory install_directory do
   recursive true
   action :create
 end
+
+apt_update
+package 'libtool-bin'
 
 file "#{install_directory}/#{install_file}" do
   only_if { ::File.exist? "#{install_directory}/#{install_file}" }
@@ -35,8 +39,14 @@ remote_file "#{install_directory}/#{install_file}" do
   action :create
 end
 
+template '/etc/snoopy.ini' do
+  source 'snoopy.ini.erb'
+  mode '0644'
+  notifies :run, "execute[install #{install_file}]", :immediately
+end
+
 execute "install #{install_file}" do
-  command "./snoopy-install.sh stable"
+  command "./snoopy-install.sh #{version}"
   only_if { ::File.exist? "#{install_directory}/#{install_file}" }
   cwd install_directory
 end

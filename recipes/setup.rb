@@ -11,6 +11,7 @@ user = node[cookbook_name]['user']
 group = node[cookbook_name]['group']
 install_directory = node[cookbook_name]['install_directory']
 install_file = node[cookbook_name]['install_file']
+install_mirror = node[cookbook_name]['install_mirror']
 version = node[cookbook_name]['version']
 
 directory install_directory do
@@ -32,7 +33,7 @@ file "#{install_directory}/#{install_file}" do
 end
 
 remote_file "#{install_directory}/#{install_file}" do
-  source 'https://github.com/a2o/snoopy/raw/install/doc/install/bin/snoopy-install.sh'
+  source install_mirror
   owner user
   group group
   mode '0755'

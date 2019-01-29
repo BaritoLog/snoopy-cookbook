@@ -21,7 +21,7 @@ directory install_directory do
   action :create
 end
 
-apt_update
+apt_update 'update'
 package 'libtool-bin'
 
 file "#{install_directory}/#{install_file}" do

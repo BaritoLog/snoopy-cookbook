@@ -1,4 +1,3 @@
 # snoopy-cookbook
 
-TODO: Enter the cookbook description here.
-
+Chef cookbook for provisioning snoopy.

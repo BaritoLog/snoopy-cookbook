@@ -30,6 +30,6 @@ suites:
       inspec_tests:
         - test/integration/default
     attributes:
-      app_name: "snoopy"
+      app_name: 'snoopy'
       snoopy:
-        version: "git-360bb18"
+        version: 'git-360bb18'

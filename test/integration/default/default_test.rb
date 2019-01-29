@@ -6,28 +6,40 @@
 # found at http://inspec.io/docs/reference/resources/
 
 unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
+  describe group('snoopy') do
     it { should exist }
   end
 
-  describe directory('/opt/snoopy') do
-    its('mode') { should cmp '0755' }
-    its('owner') { should eq 'snoopy' }
-    its('group') { should eq 'snoopy' }
-  end
-
-  describe file('/opt/snoopy/snoopy-install.sh') do
-    its('mode') { should cmp '0755' }
-    its('owner') { should eq 'snoopy' }
-    its('group') { should eq 'snoopy' }
-  end
-
-  describe file('/etc/snoopy.ini') do
+  describe user('snoopy')  do
     it { should exist }
+    its('groups') { should eq ['snoopy'] }
   end
+end
 
-  describe file('/var/log/auth.log') do
-    it { should exist }
-  end
+describe directory('/opt/snoopy') do
+  its('owner') { should eq 'snoopy' }
+  its('group') { should eq 'snoopy' }
+  its('mode') { should cmp '0755' }
+end
+
+describe file('/opt/snoopy/snoopy-install.sh') do
+  its('owner') { should eq 'snoopy' }
+  its('group') { should eq 'snoopy' }
+  its('mode') { should cmp '0755' }
+end
+
+describe file('/usr/local/lib/libsnoopy.so') do
+  its('owner') { should eq 'root' }
+  its('group') { should eq 'root' }
+  its('mode') { should cmp '0755' }
+end
+
+describe file('/etc/snoopy.ini') do
+  its('owner') { should eq 'root' }
+  its('group') { should eq 'root' }
+  its('mode') { should cmp '0644' }
+end
+
+describe file('/var/log/auth.log') do
+  it { should exist }
 end

@@ -1,4 +1,4 @@
-# snoppy-cookbook
+# snoopy-cookbook
 
 TODO: Enter the cookbook description here.
 

@@ -1,9 +1,9 @@
-name 'snoppy-cookbook'
+name 'snoopy'
 maintainer 'The Authors'
 maintainer_email 'you@example.com'
 license 'All Rights Reserved'
-description 'Installs/Configures snoppy-cookbook'
-long_description 'Installs/Configures snoppy-cookbook'
+description 'Installs/Configures snoopy'
+long_description 'Installs/Configures snoopy'
 version '0.1.0'
 chef_version '>= 13.0'
 
@@ -11,10 +11,10 @@ chef_version '>= 13.0'
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
 # uploaded to a Supermarket.
 #
-# issues_url 'https://github.com/<insert_org_here>/snoppy-cookbook/issues'
+# issues_url 'https://github.com/<insert_org_here>/snoopy-cookbook/issues'
 
 # The `source_url` points to the development repository for this cookbook.  A
 # `View Source` link will be displayed on this cookbook's page when uploaded to
 # a Supermarket.
 #
-# source_url 'https://github.com/<insert_org_here>/snoppy-cookbook'
+# source_url 'https://github.com/<insert_org_here>/snoopy-cookbook'

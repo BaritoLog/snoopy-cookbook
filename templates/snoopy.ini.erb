@@ -1,2 +1,3 @@
 [snoopy]
-  message_format = "[uid=%{uid} username=%{username} tty=%{tty} filename=%{filename} cmdline=%{cmdline}]";
+message_format = %{datetime} %{login} pid:%{pid} "[uid:%{uid} username:%{username} tty:%{tty} cwd:%{cwd} filename:%{filename} %{cmdline}]"
+output = file:<%= @log_directory %>/<%= @log_file %>

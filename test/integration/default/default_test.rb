@@ -40,6 +40,12 @@ describe file('/etc/snoopy.ini') do
   its('mode') { should cmp '0644' }
 end
 
+describe file('/var/log/snoopy.log') do
+  its('owner') { should eq 'syslog' }
+  its('group') { should eq 'adm' }
+  its('mode') { should cmp '0664' }
+end
+
 describe file('/var/log/auth.log') do
   it { should exist }
 end

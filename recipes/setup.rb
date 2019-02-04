@@ -12,6 +12,8 @@ group = node[cookbook_name]['group']
 install_directory = node[cookbook_name]['install_directory']
 install_file = node[cookbook_name]['install_file']
 install_mirror = node[cookbook_name]['install_mirror']
+log_directory = node[cookbook_name]['log_directory']
+log_file = node[cookbook_name]['log_file']
 version = node[cookbook_name]['version']
 
 directory install_directory do
@@ -40,9 +42,23 @@ remote_file "#{install_directory}/#{install_file}" do
   action :create
 end
 
+# setup log_file to allow root and non root 
+file "#{log_directory}/#{log_file}" do
+  not_if { ::File.exist? "#{log_directory}/#{log_file}" }
+  owner 'syslog'
+  group 'adm'
+  mode '0664'
+  action :create
+end
+
+# snoopy conf
 template '/etc/snoopy.ini' do
   source 'snoopy.ini.erb'
   mode '0644'
+  variables(
+    log_directory: log_directory,
+    log_file: log_file
+  )
   notifies :run, "execute[install #{install_file}]", :immediately
 end
 

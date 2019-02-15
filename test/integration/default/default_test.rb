@@ -46,6 +46,6 @@ describe file('/var/log/snoopy.log') do
   its('mode') { should cmp '0664' }
 end
 
-describe file('/var/log/auth.log') do
-  it { should exist }
+describe file('/etc/logrotate.d/snoopy') do
+  its('mode') { should cmp '0644' }
 end

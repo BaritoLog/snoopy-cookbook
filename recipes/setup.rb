@@ -67,3 +67,14 @@ execute "install #{install_file}" do
   only_if { ::File.exist? "#{install_directory}/#{install_file}" }
   cwd install_directory
 end
+
+template '/etc/logrotate.d/snoopy' do
+  source 'logrotate/snoopy.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  variables(
+    log_directory: log_directory,
+    log_file: log_file
+  )
+end

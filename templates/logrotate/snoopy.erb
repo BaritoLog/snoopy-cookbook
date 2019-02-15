@@ -1,0 +1,9 @@
+<%= @log_directory %>/<%= @log_file %> {
+    daily
+    missingok
+    rotate 7
+    delaycompress
+    compress
+    copytruncate
+    notifempty
+}
